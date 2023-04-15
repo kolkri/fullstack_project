@@ -16,9 +16,11 @@ import { AuthContext } from '../../shared/context/auth-context';
 import './Auth.css';
 
 const Auth = () => {
+
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -74,7 +76,6 @@ const Auth = () => {
             'Content-Type': 'application/json'
           }
         );
-        console.log(responseData)
         auth.login(responseData.user.id);
       } catch (err) {}
     } else {
@@ -91,7 +92,6 @@ const Auth = () => {
             'Content-Type': 'application/json'
           }
         );
-        console.log(responseData)
         auth.login(responseData.user.id);
       } catch (err) {}
     }
@@ -130,8 +130,8 @@ const Auth = () => {
             id="password"
             type="password"
             label="Password"
-            validators={[VALIDATOR_MINLENGTH(5)]}
-            errorText="Please enter a valid password, at least 5 characters."
+            validators={[VALIDATOR_MINLENGTH(6)]}
+            errorText="Please enter a valid password, at least 6 characters."
             onInput={inputHandler}
           />
           <Button type="submit" disabled={!formState.isValid}>

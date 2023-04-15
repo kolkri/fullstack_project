@@ -91,8 +91,6 @@ const createPlace = async (req, res, next) => {
     return next(error)
   }
 
-  console.log('user', user)
-
   if(!user) {
     const error = new HttpError(
       'Could not find user for provided if.', 404

@@ -29,7 +29,7 @@ export const useHttpClient = () => {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-
+        setError(null);
         setIsLoading(false);
         return responseData;
       } catch (err) {
